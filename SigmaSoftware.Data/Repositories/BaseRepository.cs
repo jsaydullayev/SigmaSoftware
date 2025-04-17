@@ -23,4 +23,9 @@ public class BaseRepository<T>(CandidateContext context) : IBaseRepository<T> wh
     {
         _context.Set<T>().Update(entity);
     }
+
+    public async Task Delete(T entity)
+    {
+        _context.Set<T>().Remove(entity);
+    }
 }
