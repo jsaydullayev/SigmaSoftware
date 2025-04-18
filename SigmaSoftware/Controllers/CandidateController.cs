@@ -29,7 +29,7 @@ public class CandidateController(ICandidateService candidateService) : Controlle
             return BadRequest(validator.Errors);
         }
         
-        var result = await _candidateService.Add(model);
+        var result = await _candidateService.Upsert(model);
         if (_candidateService.IsValid)
         {
             return Ok(result);

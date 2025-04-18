@@ -12,7 +12,7 @@ using SigmaSoftware.Data.Data;
 namespace SigmaSoftware.Data.Migrations
 {
     [DbContext(typeof(CandidateContext))]
-    [Migration("20250418124047_SigmaMigration")]
+    [Migration("20250418175022_SigmaMigration")]
     partial class SigmaMigration
     {
         /// <inheritdoc />
@@ -33,15 +33,16 @@ namespace SigmaSoftware.Data.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
-                    b.Property<TimeSpan>("CallEndTime")
+                    b.Property<TimeSpan?>("CallEndTime")
                         .HasColumnType("interval")
                         .HasColumnName("call_end_time");
 
-                    b.Property<TimeSpan>("CallStartTime")
+                    b.Property<TimeSpan?>("CallStartTime")
                         .HasColumnType("interval")
                         .HasColumnName("call_start_time");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("character varying(500)")
                         .HasColumnName("description");
@@ -59,7 +60,6 @@ namespace SigmaSoftware.Data.Migrations
                         .HasColumnName("first_name");
 
                     b.Property<string>("GitHubProfile")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("git_hub_profile");
 
@@ -70,12 +70,10 @@ namespace SigmaSoftware.Data.Migrations
                         .HasColumnName("last_name");
 
                     b.Property<string>("LinkedInProfile")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("linkedin_profile");
 
                     b.Property<string>("PhoneNumber")
-                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("character varying(20)")
                         .HasColumnName("phone_number");

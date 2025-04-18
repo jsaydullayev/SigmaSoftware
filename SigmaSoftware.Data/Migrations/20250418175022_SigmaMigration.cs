@@ -22,13 +22,13 @@ namespace SigmaSoftware.Data.Migrations
                     id = table.Column<Guid>(type: "uuid", nullable: false),
                     first_name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     last_name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    phone_number = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
+                    phone_number = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: true),
                     email = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
-                    call_start_time = table.Column<TimeSpan>(type: "interval", nullable: false),
-                    call_end_time = table.Column<TimeSpan>(type: "interval", nullable: false),
-                    linkedin_profile = table.Column<string>(type: "text", nullable: false),
-                    git_hub_profile = table.Column<string>(type: "text", nullable: false),
-                    description = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true)
+                    call_start_time = table.Column<TimeSpan>(type: "interval", nullable: true),
+                    call_end_time = table.Column<TimeSpan>(type: "interval", nullable: true),
+                    linkedin_profile = table.Column<string>(type: "text", nullable: true),
+                    git_hub_profile = table.Column<string>(type: "text", nullable: true),
+                    description = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false)
                 },
                 constraints: table =>
                 {

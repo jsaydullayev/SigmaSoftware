@@ -19,9 +19,8 @@ public class Candidate
     public string LastName { get; set; }
 
     [Column("phone_number")]
-    [Required]
     [MaxLength(20)]
-    public string PhoneNumber { get; set; }
+    public string? PhoneNumber { get; set; }
 
     [Column("email")]
     [Required]
@@ -30,25 +29,23 @@ public class Candidate
     public string Email { get; set; }
 
     [Column("call_start_time")]
-    [Required]
-    [DataType(DataType.Time)]
-    [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
-    public TimeSpan CallStartTime { get; set; }
+    //[DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
+    public TimeSpan? CallStartTime { get; set; }
 
     [Column("call_end_time")]
-    [Required]
-    [DataType(DataType.Time)]
-    [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
-    public TimeSpan CallEndTime { get; set; }
+    //[DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
+    public TimeSpan? CallEndTime { get; set; }
+
     [Column("linkedin_profile")]
     [EmailAddress]
-    public string LinkedInProfile { get; set; }
+    public string? LinkedInProfile { get; set; }
 
     [Column("git_hub_profile")]
     [EmailAddress]
-    public string GitHubProfile { get; set; }
+    public string? GitHubProfile { get; set; }
 
     [Column("description")]
+    [Required]
     [MaxLength(500)]
-    public string? Description { get; set; }
+    public string Description { get; set; }
 }

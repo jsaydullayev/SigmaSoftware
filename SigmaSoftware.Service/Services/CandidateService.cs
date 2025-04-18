@@ -12,7 +12,7 @@ public class CandidateService(IUnitOfWork unitOfWork) : StatusGenericHandler, IC
 
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
-    public async Task<string> Add(AddCandidateModel model)
+    public async Task<string> Upsert(AddCandidateModel model)
     {
         var check = await CheckEmail(model.Email);
         if (check is not null)
@@ -23,8 +23,8 @@ public class CandidateService(IUnitOfWork unitOfWork) : StatusGenericHandler, IC
             return "Your email updated";
         }
 
-        var entity = model.MapToEntity<Candidate, AddCandidateModel>();
-        await _unitOfWork.CandidateRepository().Add(entity);
+        check = model.MapToEntity<Candidate, AddCandidateModel>();
+        await _unitOfWork.CandidateRepository().Update(check);
         await _unitOfWork.CandidateRepository().SaveChanges();
         return "successfully";
     }
