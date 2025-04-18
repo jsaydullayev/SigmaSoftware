@@ -85,7 +85,6 @@ public class CreateCandidatorValidator : AbstractValidator<AddCandidateModel>
             .WithMessage("GitHub profile cannot be longer than 100 characters.");
 
         RuleFor(u => u.Description)
-            .Null()
             .MaximumLength(500)
             .WithMessage("Description cannot be longer than 500 characters.");
     }
